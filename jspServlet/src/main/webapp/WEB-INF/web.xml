@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>jspServlet</display-name>
+  <!-- 
+  	web.xml파일 : 웹 어플리케이션을 위한 설정 정보를 담고 있음(선택..)
+  				 내용 변경 후 tomcat 재기동을 하면 반영됨
+   -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!--
+   404, 500 : 응답 상태 코드
+   location : 오류 화면을 출력할 JSP 페이지
+   
+   -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/chap06/error/error404.jsp</location>
+  </error-page>
+  
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/chap06/error/error500.jsp</location>
+  </error-page>
+  
+  <!-- exception-type : 예외 클래스의 완전한 이름 -->
+  <error-page>
+  	<exception-type>java.lang.NullPointerException</exception-type>
+  	<location>/chap06/error/errorNullPointer.jsp</location>
+  </error-page>
+  
+  <!-- 
+   세션 유효 시간 설정(분) => 세션 타입아웃 시간을 30분으로 설정,
+   0 또는 음수를 입력하면 TimeOut이 없다 session.invalidate() 호출 전까지 세선 객체가 서버의 메모리에 계속 남게됨.
+   그리하여 메모리 부족 현상이 발생된다
+   (브라우저를 끄면 사라짐, 즉 켜놨을때만 유지)
+   -->
+  <session-config>
+  	<session-timeout>30</session-timeout>
+  </session-config>
+  <!-- 웹 어플리케이션이 시작될 때, 서블릿 클래스를 자동으로 로딩하도록 설정 -->
+  <servlet>
+  	<servlet-name>DBCPInit</servlet-name>
+  	<servlet-class>kr.or.ddit.util.DBCPInit</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+</web-app>
