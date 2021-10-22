@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+
+<style>
+    .sliding-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin: 0 auto;
+    width: 1020px;
+    height: auto;
+    justify-content: space-between;
+}
+
+.sliding-box .left,
+.sliding-box .right {
+    width: 30px;
+    height: 30px;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+.sliding-box .right {
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+.sliding-viwe {
+    overflow: hidden;
+    position: relative;
+    flex-basis: 900px;
+    width: 900px;
+    height: 180px;
+}
+
+.sliding-viwe .containner {
+    position: absolute;
+    left: 0;
+    margin: 0px;
+    width: 1800px;
+    background-color: #fff;
+}
+
+.sliding-viwe .containner li {
+    float: left;
+    margin: 0px;
+    width: 180px;
+    height: 180px;
+    text-align: center;
+}
+
+.sliding-viwe .containner li img {
+    margin: 15px auto;
+    width: 150px;
+}
+</style>
+</head>
+<body>
+    <div class="sliding-box">
+        <img class="left" src="./images/arrow.png" alt="다음" />
+        <div class="sliding-viwe">
+            <ul class="containner">
+                <li>
+                    <img src="./images/flower.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="./images/fox.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="./images/lightning.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="./images/moon.jpg" alt="" />
+                 </li>
+                <li>
+                    <img src="./images/nature.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="./images/space.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+        <img class="right" src="./images/arrow.png" alt="이전" />
+    </div>
+    <script src="vendor/js/jQuery.js"></script>
+    <script src="./js/autoSlideShow.js"></script>
+</body>
+</html>
