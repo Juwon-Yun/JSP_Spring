@@ -1,0 +1,8 @@
+package kr.or.ddit.vo;
+
+public class AttachFileVO {
+	private String fileName;
+	private String uploadPath;
+	private String uuid;
+	private boolean image;
+}

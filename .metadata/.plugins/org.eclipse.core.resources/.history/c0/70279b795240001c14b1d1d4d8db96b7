@@ -1,0 +1,5 @@
+package kr.or.teacher.mapper;
+
+public interface ProductMapper {
+
+}

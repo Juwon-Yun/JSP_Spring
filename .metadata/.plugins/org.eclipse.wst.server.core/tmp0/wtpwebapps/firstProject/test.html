@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .body__container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            border: 1px solid red;
+        }
+
+        header,
+        footer {
+            border: 1px solid blue;
+        }
+
+        header,
+        ul {
+            display: flex;
+        }
+
+        header {
+            height: 10vh;
+        }
+
+        /* main {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main section {
+            border: 1px solid green;
+        }
+
+        main section:nth-child(1) {
+            height: 40%;
+        }
+
+        main section:nth-child(2),
+        main section:nth-child(3) {
+            height: 30%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        } */
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            height: 100%;
+        }
+
+        main section {
+            border: 1px solid red;
+        }
+
+
+
+
+        footer {
+            height: 5vh;
+        }
+
+        
+    </style>
+</head>
+<body>
+<div class="body__container">
+    <header>
+        <a href="">
+            <h1>logo</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="">test1</a></li>
+                <li><a href="">test1</a></li>
+                <li><a href="">test1</a></li>
+                <li><a href="">test1</a></li>
+                <li><a href="">test1</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <main>
+        <section>
+            img banner
+        </section>
+        <section>
+            <article>category</article>
+            <article>category</article>
+            <article>category</article>
+        </section>
+        <section>
+            <article>info</article>
+            <article>info</article>
+            <article>info</article>
+        </section>
+    </main> -->
+
+    <main>
+        <section>list</section>
+        <section>description</section>
+    </main>
+
+    <footer>
+        copyright
+    </footer>
+</div>
+</body>
+</html>

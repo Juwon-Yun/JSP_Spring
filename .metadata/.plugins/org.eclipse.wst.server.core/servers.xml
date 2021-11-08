@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost" name="Tomcat v8.5 Server at localhost" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="11">
+    <list key="modules" value0="RARAMEMBER::org.eclipse.jst.jee.server:RARAMEMBER::jst.web::3.1" value1="jspServlet::org.eclipse.jst.jee.server:jspServlet::jst.web::3.1" value2="firstProject::org.eclipse.jst.jee.server:firstProject::jst.web::3.1"/>
+  </server>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost (springProj)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost (springProj)" name="Tomcat v8.5 Server at localhost (springProj)" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="8">
+    <list key="modules" value0="springProj::org.eclipse.jst.jee.server:springProj::jst.web::3.1"/>
+  </server>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost (springGuestBoard)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost (springGuestBoard)" name="Tomcat v8.5 Server at localhost (springGuestBoard)" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="4">
+    <list key="modules" value0="springGuestBoard::org.eclipse.jst.jee.server:springGuestBoard::jst.web::3.1"/>
+  </server>
+</servers>

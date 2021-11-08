@@ -1,0 +1,11 @@
+package kr.or.ddit.dao;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class GuestBookDao {
+	
+	SqlSessionTemplate sqlSessionTemplate;
+	
+}

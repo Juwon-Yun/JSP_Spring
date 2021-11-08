@@ -1,0 +1,22 @@
+package kr.or.teacher.serviceImpl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	kr.or.teacher.dao.ProductDao productDao;
+	
+	//상품 목록
+	@Override
+	public List<Map<String, Object>> list() {
+		return this.productDao.list();
+	}
+
+}

@@ -1,0 +1,7 @@
+package kr.or.ddit.vo;
+
+public class MemberVO {
+	private String memId;
+	private String memName;
+	private String [] hoddyList;
+}

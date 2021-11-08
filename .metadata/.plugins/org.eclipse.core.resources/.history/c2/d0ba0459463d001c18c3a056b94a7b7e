@@ -1,0 +1,13 @@
+package kr.or.teacher.service;
+
+import java.util.List;
+import java.util.Map;
+
+import kr.or.ddit.vo.ProductVO;
+
+public interface ProductService {
+	//상품 목록
+	public List<Map<String,Object>> list();
+	
+	public int insert(ProductVO productVo);
+}

@@ -1,0 +1,23 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>회원 목록</title>
+</head>
+<body>
+<%
+
+	//1. JDBC 드라이버 로딩
+	Class.forName("oracle.jdbc.friver.OracleDriver");
+	
+	Connection conn = null;
+	
+	Statement stmt = null;
+	
+%>
+
+</body>
+</html>

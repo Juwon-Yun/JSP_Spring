@@ -1,0 +1,7 @@
+package kr.or.ddit.vo;
+
+public class CardVO {
+	// 카드번호
+	private String no;
+	// 유효연월
+}

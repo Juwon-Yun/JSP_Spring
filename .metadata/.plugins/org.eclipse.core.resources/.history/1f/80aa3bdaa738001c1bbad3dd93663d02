@@ -1,0 +1,20 @@
+package kr.or.ddit.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import kr.or.ddit.dao.BookDao;
+import kr.or.ddit.serivce.IGuestBookService;
+
+public class GuestBookService implements IGuestBookService {
+
+	@Autowired
+	BookDao bookDao;
+	
+	@Override
+	public List<Map<String, Object>> list() {
+	}
+
+}

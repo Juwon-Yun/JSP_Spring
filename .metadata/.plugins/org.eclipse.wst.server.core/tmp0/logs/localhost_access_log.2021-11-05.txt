@@ -1,0 +1,3 @@
+127.0.0.1 - - [05/Nov/2021:10:21:42 +0900] "GET / HTTP/1.1" 404 902
+0:0:0:0:0:0:0:1 - - [05/Nov/2021:10:21:43 +0900] "GET /ddit/WEB-INF/classes/kr/or/ddit/controller/UploadController.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [05/Nov/2021:10:21:43 +0900] "GET /favicon.ico HTTP/1.1" 404 902

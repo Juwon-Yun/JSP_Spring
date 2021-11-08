@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	마이바티스는 쿼리 실행 시 파라미터를 치환함
+	selectKey 전 : {{"title","제목"},{"category","카테고리"},{"price","10000"}}
+	selectKey 후 : {{"title","제목"},{"category","카테고리"},{"price","10000"},{"bookId",2}}
+	마이바티스 쿼리 XML에 전달되면 #{title}을 "제목"으로 자동 변환함
+ -->
+  <mapper namespace="guestbook">
+  	<insert id="insert" parameterType="hashMap" >
+ 		 insert into PRODUCT(P_ID,
+ 		 				     P_NAME, P_UNITPRICE,
+ 		 				     P_DESCRIPTION, P_CATEGORY,
+ 		 				     P_MANUFACTURER, P_UNITSINSTOCK,
+ 		 				     P_CONDITION, P_FILENAME)
+    		values(
+    				#{productId},
+    				#{name}, #{unitPrice},
+    				#{description},	#{category},
+    				#{manufacturer}, #{unitsInStock},
+    				#{condition}, #{productImage}
+          		  )
+  	</insert>
+  		<!-- 리턴타입 생략함 -->
+<!--   		<insert id="insert" parameterType="hashMap" > -->
+<!--   			order="BEFORE" => insert 이전에 조회함 -->
+<!--   			<selectKey order="BEFORE" resultType="integer" keyProperty="bookId"> -->
+<!--   				SELECT NVL(MAX(BOOK_ID),0)+1 FROM BOOK -->
+<!--   			</selectKey> -->
+<!-- 	  			insert into book(BOOK_ID, TITLE, CATEGORY, PRICE, INSERT_DATE) -->
+<!-- 				values( -->
+<!-- 	    				#{bookId} -->
+<!-- 	    				, #{title} -->
+<!-- 	    				, #{category} -->
+<!-- 	    				, #{price} -->
+<!-- 	    				, SYSDATE -->
+<!-- 					  ) -->
+<!--   		</insert> -->
+  		
+<!--   		<select id="select" parameterType="hashMap" resultType="hashMap"> -->
+<!-- 			SELECT TITLE, CATEGORY, PRICE, INSERT_DATE FROM BOOK -->
+<!-- 			WHERE BOOK_ID = #{bookId} -->
+<!--   		</select> -->
+  		
+<!--   		<update id="update" parameterType="hashMap"> -->
+<!--   			UPDATE BOOK  -->
+<!-- 			SET TITLE = #{title},  -->
+<!--      			CATEGORY = #{category},  -->
+<!--       			PRICE = #{price}  -->
+<!-- 			WHERE BOOK_ID = #{bookId} -->
+<!--   		</update> -->
+  		
+<!--   		책 삭제 -->
+<!--   		<delete id="delete" parameterType="hashMap"> -->
+<!-- 			DELETE FROM BOOK -->
+<!--   			  WHERE  BOOK_ID = #{bookId} -->
+<!--   		</delete> -->
+  		
+<!--   		<select id="exlist" resultType="hashMap"> -->
+<!-- 			SELECT BOOK_ID, TITLE, CATEGORY, PRICE, INSERT_DATE -->
+<!-- 			FROM BOOK -->
+<!-- 			ORDER BY INSERT_DATE DESC -->
+<!--   		</select> -->
+  		
+  		<!-- 
+  			책 목록 
+  			map : {keyword=제로채}
+  			
+  			WHERE 1 = 1은 관습적인 구문 AND절과 if태그를 활용하기 위해 항상 TRUE 인 값을 WHERE에 인용함
+  			- 동적쿼리 = 쿼리의 내용이 파라미터가 아니라 마이바티스의 규칙에 의해 변경되는 것
+  			CDATA 를 사용하면 꺽쇠들이 에러가 나지 않는다 태그의 > 인지 쿼리의 > 인지 헷갈려함
+  			
+  			keyword!='' 의 경우  ''는 프론트단에서 trim() 했을때 ''값을 받는다
+  		 -->
+<!-- 			<if test="keyword!=null and keyword!=''"> -->
+<!-- 			AND (TITLE LIKE '%'||#{keyword}||'%' OR CATEGORY LIKE '%'||#{keyword}||'%') -->
+<!-- 			</if> -->
+		<select id="selectOne" resultType="hashMap" parameterType="String">
+			select * from product where p_id = #{id}
+		</select>
+  		<select id="list" resultType="hashMap">
+  			SELECT P_ID,
+  				   P_NAME,
+  				   P_UNITPRICE, P_DESCRIPTION,
+  				   P_CATEGORY, P_MANUFACTURER, P_UNITSINSTOCK,
+  				   P_CONDITION, P_FILENAME
+			FROM PRODUCT
+			WHERE 1 = 1
+			ORDER BY P_ID DESC
+  		</select>
+  </mapper>

@@ -1,0 +1,14 @@
+package kr.or.ddit.service.impl;
+
+import kr.or.ddit.serivce.IBoardService;
+import kr.or.ddit.vo.MemberVO;
+
+public class BoardServiceImpl implements IBoardService{
+
+	@Override
+	public int insertMemberHobby(MemberVO memberVo) {
+		return 0;
+	}
+	
+	
+}

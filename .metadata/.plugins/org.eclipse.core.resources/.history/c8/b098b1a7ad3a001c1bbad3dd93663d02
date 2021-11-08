@@ -1,0 +1,8 @@
+package kr.or.ddit.service.impl;
+
+public class BoardServiceImpl {
+	
+	public int insertMemberHobby() {
+		
+	}
+}

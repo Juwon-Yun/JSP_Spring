@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#maildiv{
+	width: 300px ;
+	text-align: center;
+}
+
+#insertBtn,
+#resetBtn{
+	margin-left: 30px;
+}

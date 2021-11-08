@@ -1,0 +1,30 @@
+package kr.or.ddit.util;
+
+import net.openhft.compiler.CompilerUtils;
+
+public class TestCompiler {
+	public static void main(String[] args) {
+		String className = "mypackage.MyClass";
+		String javaCode = "package mypackage;\n" +
+		                 "public class MyClass implements Runnable {\n" +
+		                 "    public void run() {\n" +
+		                 "        System.out.println(\"Hello World\");\n" +
+		                 "    }\n" +
+		                 "}\n";
+		Runnable runner = null;
+		try {
+			Class aClass = CompilerUtils.CACHED_COMPILER.loadFromJava(className, javaCode);
+			runner = (Runnable) aClass.newInstance();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		runner.run();
+	}
+}

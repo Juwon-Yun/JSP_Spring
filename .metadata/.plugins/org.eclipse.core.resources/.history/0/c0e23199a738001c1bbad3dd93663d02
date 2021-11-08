@@ -1,0 +1,6 @@
+package kr.or.ddit.serivce;
+
+public interface IGuestBookService {
+	
+	public List<Map<String, Object>> list();
+}
