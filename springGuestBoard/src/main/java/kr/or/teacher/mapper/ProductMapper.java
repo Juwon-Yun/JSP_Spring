@@ -16,4 +16,6 @@ public interface ProductMapper {
 	
 	// mapping한 XML의 id값 => 메소드명
 	public Map<String, Object> detail(Map<String, Object> map);
+	
+	public int processUpdate(ProductVO productVo);
 }

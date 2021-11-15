@@ -1,9 +1,0 @@
-package kr.or.ddit.vo;
-
-public class AddressVO {
-	
-	private String postCode;
-	private String location;
-	
-	
-}

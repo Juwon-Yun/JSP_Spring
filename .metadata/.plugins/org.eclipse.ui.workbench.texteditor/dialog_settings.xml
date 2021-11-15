@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="map.get("/>
+		<item key="selection" value="size=&quot;1&quot;"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="size=&quot;7&quot;"/>
+			<item value="id=&quot;exampleInputEmail&quot;"/>
+			<item value="items"/>
+			<item value="void"/>
+			<item value="ProductVO"/>
+			<item value="&quot;)%&gt;"/>
+			<item value="&quot;) %&gt;"/>
+			<item value="&lt;%=rs.getString(&quot;"/>
+			<item value="mybatis"/>
 			<item value="request.getParameter("/>
 			<item value="rs.getString("/>
 			<item value="&lt;%=rs.getInt(&quot;"/>
-			<item value="&lt;%=rs.getString(&quot;"/>
 			<item value="&lt;%=rs.getInt("/>
 			<item value="&lt;%=rs.getString("/>
 			<item value="input"/>
-			<item value="uploadController"/>
-			<item value="jackson"/>
-			<item value="coo"/>
-			<item value="f"/>
-			<item value="uploadFile"/>
-			<item value="cnt"/>
-			<item value="orderQuantity"/>
-			<item value="Attribute(&quot;cartlist&quot;)"/>
 		</list>
 		<list key="replacehistory">
+			<item value="size=&quot;1&quot;"/>
+			<item value=""/>
+			<item value="String"/>
+			<item value="hashMap"/>
+			<item value="}"/>
+			<item value="${result."/>
 			<item value="map.get("/>
 			<item value="${row."/>
-			<item value=""/>
 			<item value="&lt;/span&gt;"/>
 			<item value="&lt;span&gt;"/>
 			<item value="p"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1538"/>
-		<item key="DIALOG_Y_ORIGIN" value="256"/>
+		<item key="DIALOG_X_ORIGIN" value="943"/>
+		<item key="DIALOG_Y_ORIGIN" value="159"/>
 		<item key="DIALOG_WIDTH" value="393"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

@@ -25,6 +25,9 @@ import kr.or.ddit.util.CreateCookieUtil;
 import kr.or.ddit.util.UploadFileUtil;
 import kr.or.ddit.vo.ProductVO;
 
+// 테이블을 DELETE, COMMIT 했을 경우(DROP은 복구안됨)
+// FLASHBACK TABLE PRODUCT TO TIMESTAMP SYSDATE - 10/24/60;
+
 @Controller
 public class GuestBookController {
 	

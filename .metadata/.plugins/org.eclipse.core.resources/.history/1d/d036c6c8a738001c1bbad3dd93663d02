@@ -1,7 +1,0 @@
-package kr.or.ddit.service.impl;
-
-import kr.or.ddit.serivce.IGuestBookService;
-
-public class GuestBookService implements IGuestBookService {
-
-}

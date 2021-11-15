@@ -58,5 +58,16 @@
 			ORDER BY P_ID DESC
   		</select>
   		
+  		<update id="processUpdate" parameterType="productVo">
+  			UPDATE PRODUCT
+  			SET P_NAME = #{name}, P_UNITPRICE = #{unitPrice},
+                  P_DESCRIPTION = #{description}, P_CATEGORY = #{category},
+                  P_MANUFACTURER = #{manufacturer}, P_UNITSINSTOCK = #{unitsInStock},
+                  P_CONDITION = #{condition}
+                  <if test=" filename != null and filename != '' ">
+                  , P_FILENAME = #{productImage}
+                  </if>
+            WHERE P_ID = #{productId}
+  		</update>
   		
   </mapper>

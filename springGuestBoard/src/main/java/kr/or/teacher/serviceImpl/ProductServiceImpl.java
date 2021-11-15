@@ -1,10 +1,12 @@
 package kr.or.teacher.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.vo.ProductVO;
 import kr.or.teacher.dao.ProductDao;
@@ -45,5 +47,28 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Map<String, Object> detail02(Map<String, Object> map){
 		return this.productMapper.detail(map);
+	}
+
+	@Override
+	public int goUpdate(ProductVO productVo) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("productId", productVo.getProductId());
+		Map<String, Object> product = this.productMapper.detail(map);
+		int result = 0;
+		if(product.size() > 0) {
+			MultipartFile [] files = productVo.getProductImage();
+			String uploadFilename = "";
+			for (MultipartFile multipartFile : files) {
+				uploadFilename = multipartFile.getOriginalFilename();
+			}
+			if (uploadFilename != "") {
+				productVo.setFilename(uploadFilename);
+			}else {
+				
+			}
+			result = this.productMapper.processUpdate(productVo);
+		}//end if
+		return result;
+		
 	}
 }

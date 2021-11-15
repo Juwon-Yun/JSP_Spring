@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.or.ddit.emp.mapper.EmpMapper">
+  
+  	<insert id="insert" parameterType="empVo">
+	  	MERGE INTO EMP A
+			USING DUAL
+			ON(A.EMP_NO =#{empNo})            
+			WHEN MATCHED THEN   
+			    UPDATE SET A.NM=#{nm}, A.ADDR=#{addr}
+			    	, A.HP=#{hp}, A.POST_NO=#{postNo}
+			    	, A.ADDR2=#{addr2}, A.PASSWORD=PKG_CRYPTO.ENCRYPT(#{password})
+			WHEN NOT MATCHED THEN 
+			    INSERT (EMP_NO, NM, ADDR, HP, POST_NO, ADDR2, PASSWORD)
+					     VALUES(
+					     	(SELECT NVL(MAX(TO_NUMBER(EMP_NO)),0)+1 FROM EMP)
+					     	, #{nm}
+					     	, #{addr}
+					     	, #{hp}
+					     	, #{postNo}
+					     	, #{addr2}
+					     	, PKG_CRYPTO.ENCRYPT(#{password})
+			    )
+  	</insert>
+    
+<!-- 		INSERT INTO EMP(EMP_NO, NM, ADDR, HP, POST_NO, ADDR2, PASSWORD) -->
+<!-- 		     VALUES( -->
+<!-- 		     	(SELECT NVL(MAX(TO_NUMBER(EMP_NO)),0)+1 FROM EMP) -->
+<!-- 		     	, #{nm} -->
+<!-- 		     	, #{addr} -->
+<!-- 		     	, #{hp} -->
+<!-- 		     	, #{postNo} -->
+<!-- 		     	, #{addr2} -->
+<!-- 		     	, PKG_CRYPTO.ENCRYPT(#{password}) -->
+<!-- 		     ) -->
+  	
+  	<!-- 직원번호 자동생성 -->
+  	<select id="createEmpNo" resultType="String">
+  		SELECT NVL(MAX(TO_NUMBER(EMP_NO)),0)+1 FROM EMP
+  	</select>
+  	<!-- 직원 정보 상세 -->
+  	<select id="detail" parameterType="String" resultType="empVo" >
+  		SELECT * FROM EMP WHERE EMP_NO = #{value}
+  	</select>
+	<update id="update" parameterType="string">
+  			UPDATE EMP 
+			  SET FIRE_YN = 'Y'
+            WHERE P_ID = #{value}
+  	</update>
+<!-- 	<delete id="delete" parameterType="String"> -->
+<!-- 			DELETE FROM PRODUCT -->
+<!--   			  WHERE  P_ID = '${value}' -->
+<!-- 	</delete> -->
+<!-- 		<select id="selectOne" resultType="hashMap" parameterType="String"> -->
+<!-- 			select * from product where p_id = '${value}' -->
+<!-- 		</select> -->
+  		
+  		<select id="list" resultType="empVo">
+  			<![CDATA[
+  				SELECT * FROM EMP
+  			]]>
+  				ORDER BY EMP_NO ASC
+  		</select>
+  		
+  		<update id="processUpdate" parameterType="hashMap">
+  			UPDATE PRODUCT
+  			SET P_NAME = #{name}, P_UNITPRICE = #{unitPrice},
+                  P_DESCRIPTION = #{description}, P_CATEGORY = #{category},
+                  P_MANUFACTURER = #{manufacturer}, P_UNITSINSTOCK = #{unitsInStock},
+                  P_CONDITION = #{condition}
+                  <if test=" filename != null and filename != '' ">
+                  , P_FILENAME = #{productImage}
+                  </if>
+            WHERE P_ID = #{productId}
+  		</update>
+  		
+  </mapper>

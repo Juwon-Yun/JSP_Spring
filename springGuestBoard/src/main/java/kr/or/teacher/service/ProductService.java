@@ -19,5 +19,7 @@ public interface ProductService {
 	
 	// Mapper를 이용한 detail 메소드
 	public Map<String, Object> detail02(Map<String, Object> map);
+
+	public int goUpdate(ProductVO productVo);
 	
 }

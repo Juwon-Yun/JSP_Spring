@@ -365,6 +365,16 @@ public class ProductController {
 		return "guestbook_teacher/updateProduct";
 	}
 	
+	// 상품 수정
+	@RequestMapping(value = "processUpdateProduct", method = RequestMethod.POST)
+	public String processUpdateProduct(@ModelAttribute ProductVO productVo) {
+		logger.info("productVo => " + productVo.toString());
+		
+		this.productServiceImpl.goUpdate(productVo);
+		
+		return "redirect:/guestbook_teacher/editProduct?edit=update";
+	}
+	
 }// end class
 
 
