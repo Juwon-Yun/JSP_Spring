@@ -5,6 +5,7 @@ import java.util.List;
 import kr.or.ddit.emp.vo.EmpVO;
 
 public interface EmpService {
+	
 	public List<EmpVO> list() throws Exception;
 
 	public int insert(EmpVO empVo) throws Exception;

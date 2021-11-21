@@ -1,21 +1,34 @@
 package kr.or.ddit.article.vo;
 
-import java.util.Date;
-
 import org.hibernate.validator.constraints.NotBlank;
 
 public class ArticleVO {
+	private int rnum;
 	private int articleNo;
-	private WriterVO WriterVO;
+	private WriterVO writerVO;
 	@NotBlank
 	private String title;
-	private Date regdate;
-	private Date moddate;
+	private String regdate;
+	private String moddate;
 	private int readCnt;
 	private ArticleContentVO articleContentVO;
-	
-	public ArticleVO() {}
+		
+	public ArticleVO() {
+		
+	}
 
+	public ArticleVO(int articleNo, WriterVO writerVO, String title,
+			String regdate, String moddate, ArticleContentVO articleContentVO, int readCnt) {
+		super();
+		this.articleNo = articleNo;
+		this.writerVO = writerVO;
+		this.title = title;
+		this.regdate = regdate;
+		this.moddate = moddate;
+		this.articleContentVO = articleContentVO;
+		this.readCnt = readCnt;
+	}
+	
 	public int getArticleNo() {
 		return articleNo;
 	}
@@ -25,11 +38,11 @@ public class ArticleVO {
 	}
 
 	public WriterVO getWriterVO() {
-		return WriterVO;
+		return writerVO;
 	}
 
 	public void setWriterVO(WriterVO writerVO) {
-		WriterVO = writerVO;
+		this.writerVO = writerVO;
 	}
 
 	public String getTitle() {
@@ -40,19 +53,19 @@ public class ArticleVO {
 		this.title = title;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
-	public Date getModdate() {
+	public String getModdate() {
 		return moddate;
 	}
 
-	public void setModdate(Date moddate) {
+	public void setModdate(String moddate) {
 		this.moddate = moddate;
 	}
 
@@ -72,13 +85,20 @@ public class ArticleVO {
 		this.articleContentVO = articleContentVO;
 	}
 
-	@Override
-	public String toString() {
-		return "ArticleVO [articleNo=" + articleNo + ", WriterVO=" + WriterVO + ", title=" + title + ", regdate="
-				+ regdate + ", moddate=" + moddate + ", readCnt=" + readCnt + ", articleContentVO=" + articleContentVO
-				+ "]";
+	public int getRnum() {
+		return rnum;
 	}
 
-	
-	
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
+	@Override
+	public String toString() {
+		return "ArticleVO [rnum=" + rnum + ", articleNo=" + articleNo + ", writerVO=" + writerVO + ", title=" + title
+				+ ", regdate=" + regdate + ", moddate=" + moddate + ", readCnt=" + readCnt + ", articleContentVO="
+				+ articleContentVO + "]";
+	}
+
+
 }

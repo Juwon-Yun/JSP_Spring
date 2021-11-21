@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="size=&quot;1&quot;"/>
+		<item key="selection" value="/js/demo/"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="size=&quot;7&quot;"/>
-			<item value="id=&quot;exampleInputEmail&quot;"/>
-			<item value="items"/>
-			<item value="void"/>
-			<item value="ProductVO"/>
-			<item value="&quot;)%&gt;"/>
-			<item value="&quot;) %&gt;"/>
-			<item value="&lt;%=rs.getString(&quot;"/>
-			<item value="mybatis"/>
-			<item value="request.getParameter("/>
-			<item value="rs.getString("/>
-			<item value="&lt;%=rs.getInt(&quot;"/>
-			<item value="&lt;%=rs.getInt("/>
-			<item value="&lt;%=rs.getString("/>
-			<item value="input"/>
+			<item value="/js/demo/"/>
+			<item value="jackson-data"/>
+			<item value="Showing 1 to 10 of "/>
+			<item value="Showing 1 to 10 of 10 entries"/>
+			<item value="dataTable_previous"/>
+			<item value="totalPages"/>
+			<item value="게시판"/>
+			<item value="게시물"/>
+			<item value="WriterVO"/>
+			<item value="empServiceImple"/>
+			<item value="empServiceimple"/>
+			<item value="empService"/>
+			<item value="logout"/>
+			<item value="Nav Item"/>
+			<item value="src=&quot;img/"/>
 		</list>
 		<list key="replacehistory">
+			<item value="/js/demo/"/>
+			<item value="writerVO"/>
+			<item value="empServiceImpl"/>
+			<item value="empServiceImple"/>
+			<item value="empServiceimple"/>
+			<item value="src=&quot;/resources/img/"/>
+			<item value="&quot;resources/css/"/>
+			<item value="&quot;resources/js/"/>
+			<item value="&quot;resources/vendor/"/>
 			<item value="size=&quot;1&quot;"/>
 			<item value=""/>
 			<item value="String"/>
 			<item value="hashMap"/>
 			<item value="}"/>
 			<item value="${result."/>
-			<item value="map.get("/>
-			<item value="${row."/>
-			<item value="&lt;/span&gt;"/>
-			<item value="&lt;span&gt;"/>
-			<item value="p"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="943"/>
-		<item key="DIALOG_Y_ORIGIN" value="159"/>
+		<item key="DIALOG_X_ORIGIN" value="881"/>
+		<item key="DIALOG_Y_ORIGIN" value="120"/>
 		<item key="DIALOG_WIDTH" value="393"/>
-		<item key="DIALOG_HEIGHT" value="523"/>
+		<item key="DIALOG_HEIGHT" value="522"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.jst.jsp.ui.internal.preferences.ui.JSPTemplatePreferencePage$JSPEditTemplateDialog_dialogBounds">

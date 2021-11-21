@@ -156,7 +156,7 @@
       <Context docBase="E:\Java_workspace\6.jspSpring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\RARAMEMBER" path="/RARAMEMBER" reloadable="true" source="org.eclipse.jst.jee.server:RARAMEMBER"/>
       <Context docBase="E:\Java_workspace\6.jspSpring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jspServlet" path="" reloadable="true" source="org.eclipse.jst.jee.server:jspServlet"/>
       <Context docBase="E:\Java_workspace\6.jspSpring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\firstProject" path="/firstProject" reloadable="true" source="org.eclipse.jst.jee.server:firstProject"/>
-      <Context docBase="E:\Java_workspace\6.jspSpring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springProj" path="/ddit" reloadable="true" source="org.eclipse.jst.jee.server:springProj"/></Host>
+      </Host>
     </Engine>
   </Service>
 </Server>

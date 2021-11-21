@@ -1,6 +1,0 @@
-package kr.or.teacher.mapper;
-
-public interface ProductMapper {
-	// Mapper XML의 id
-	detail
-}

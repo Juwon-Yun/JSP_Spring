@@ -1,8 +1,0 @@
-package kr.or.teacher.mapper;
-
-import java.util.Map;
-
-public interface ProductMapper {
-	// Mapper XML의 id
-	public Map<String, Object> detail();
-}

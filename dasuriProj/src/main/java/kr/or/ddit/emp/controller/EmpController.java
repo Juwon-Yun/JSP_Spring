@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletRequest;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.or.ddit.emp.service.EmpService;
+import kr.or.ddit.emp.service.impl.EmpServiceImpl;
 import kr.or.ddit.emp.vo.EmpVO;
 import kr.or.ddit.emp.vo.Member;
 
@@ -32,14 +32,15 @@ import kr.or.ddit.emp.vo.Member;
 @RequestMapping("/emp")
 public class EmpController {
 	
+	
 	@Autowired
-	EmpService empService;
+	EmpServiceImpl empServiceImpl;
 	
 	private static final Logger logger = LoggerFactory.getLogger(EmpController.class);
 	
 	@RequestMapping("/list")
 	public String list(Model model) throws Exception {
-		List<EmpVO> list = this.empService.list();
+		List<EmpVO> list = this.empServiceImpl.list();
 		model.addAttribute("list", list);
 		return "emp/list";
 	}
@@ -141,7 +142,7 @@ public class EmpController {
 
 		EmpVO empVo = null;
 
-		try {empVo = this.empService.detail(empNo);} catch (Exception e) {e.printStackTrace();}
+		try {empVo = this.empServiceImpl.detail(empNo);} catch (Exception e) {e.printStackTrace();}
 
 		logger.info("empVo" + empVo);
 		
@@ -183,7 +184,7 @@ public class EmpController {
 		}
 		
 			// 직원 등록 및 직원 존재 시 정보 업데이트 처리
-			updateCnt = this.empService.insert(empVo);
+			updateCnt = this.empServiceImpl.insert(empVo);
 			
 		logger.info("cnt => "+updateCnt);
 		
@@ -198,7 +199,7 @@ public class EmpController {
 	public String deletePost(@RequestParam("empNo")String empNo) throws Exception {
 		logger.info("deletePost");
 		
-		int updateCnt = this.empService.update(empNo);
+		int updateCnt = this.empServiceImpl.update(empNo);
 		
 		logger.info("updateCnt => " + updateCnt);
 		
@@ -261,7 +262,7 @@ public class EmpController {
 		String empNo = "";
 		//직원번호 자동생성
 		try {
-			empNo = this.empService.createEmpNo();
+			empNo = this.empServiceImpl.createEmpNo();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -305,7 +306,7 @@ public class EmpController {
 		}
 		
 		try {
-			cnt = this.empService.insert(emp);
+			cnt = this.empServiceImpl.insert(emp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -327,53 +328,82 @@ public class EmpController {
 	}
 	
 	//로그인 처리
-	@RequestMapping(value =  "/loginForm", method = RequestMethod.POST)
-	public String login(@ModelAttribute("emp") @Validated EmpVO emp
-			, BindingResult result
-			, HttpServletRequest request
-			, Model model) {
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(
+			@ModelAttribute("emp") @Validated EmpVO empVO,
+			@RequestParam(value="customCheck", required=false) 
+				String customCheck,
+			BindingResult result,
+			HttpServletRequest request,
+			HttpServletResponse response,
+			Model model) throws Exception {
+		//아이디 기억하기 체크박스(customCheck : on)
+		logger.info("customCheck : " + customCheck);
 		
-		if(result.hasErrors()) {
-			
-			logger.info("haserrors");
-			
+		logger.info("emp : " + empVO.toString());
+		
+		logger.info("result.hasErrors() : " + result.hasErrors());
+		
+		if(result.hasErrors()) {	//validated 결과 문제가 발생
 			return "emp/loginForm";
-		}else {
-			HttpSession session = request.getSession();
-			
-			String empNo = emp.getEmpNo();
-			String password = emp.getPassword();
-			
-			EmpVO dbEmpVO = null;
-			try {
-				dbEmpVO = this.empService.detail(empNo);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			if(dbEmpVO != null) {
-				// 그리고 입력한 비밀번호와 해당 아이디의 db쪽 비밀번호가 일치하면 로그인
-				if(password.equals(dbEmpVO.getPassword())) {
-					session.setAttribute("EMPVO", emp);
-					logger.info("로그인 성공");
-					return "emp/index";
+		}
+		
+		//문제가 없으면 로그인 처리..
+		HttpSession session = request.getSession();
+		
+		//아이디에 해당되는 직원이 있는가?
+		String empNo = empVO.getEmpNo();	//1
+		String password = empVO.getPassword();	//java
+		//db정보
+		System.out.println("DB 조회전의 empNo" + empNo);
+		EmpVO dbEmpVO = this.empServiceImpl.detail(empNo);
+		System.out.println("DB 조회후의 VO" + dbEmpVO);
+		if(dbEmpVO!=null) {	//아이디에 해당되는 직원이 있다면
+			//그리고 입력한 비밀번호와 해당 아이디의 db쪽 비밀번호가 일치하면 로그인
+			System.out.println("password" + password);
+			if(password.equals(dbEmpVO.getPassword())) {
+				//LoginCheckFilter.java에서 session.getAttribute("EMPVO")
+				session.setAttribute("EMPVO", dbEmpVO);
+				logger.info("로그인 성공");
+				if(customCheck!=null) {
+					//아이디기억하기를 체크했을 경우..
+					if(customCheck.equals("on")) {
+						logger.info("customCheck on 실행");
+						//쿠키 생성(직원 번호)
+						Cookie cookie = new Cookie("empNo", empVO.getEmpNo());
+						//초단위 설정(60초 -> 1분 -> 하루 -> 한달)
+						cookie.setMaxAge(60 * 60 * 24 * 30);
+						response.addCookie(cookie);
+					}else {//아이디기억하기를 체크하지 않았을 경우
+						//쿠키 삭제
+						Cookie cookie = new Cookie("empNo", "");
+						//초단위 설정(0)
+						cookie.setMaxAge(0);
+						response.addCookie(cookie);
+					}
 				}else {
-					logger.info("로그인 실패");
-					emp = new EmpVO();
-					model.addAttribute("loginFail", "비밀번호가 잘못되었습니다.");
-					return "emp/loginForm";
+					//쿠키 삭제
+					Cookie cookie = new Cookie("empNo", "");
+					//초단위 설정(0)
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
 				}
-			}else {
-				// 아이디에 해당하는 직원이 없다면
-				logger.info("로그인 실패");
-				emp = new EmpVO();
-				model.addAttribute("loginFail", "해당 아이디가 없습니다.");
+				//end if
+				return "emp/index";
+			}else {	//로그인 실패
+				empVO = new EmpVO();
+				model.addAttribute("loginFail", "비밀번호가 잘못되었습니다.");
 				return "emp/loginForm";
 			}
-			
+		}else {	//아이디에 해당되는 직원이 없다면..
+			empVO = new EmpVO();
+			model.addAttribute("loginFail", "해당 아이디가 없습니다.");
+			return "emp/loginForm";
 		}
+		
+		
 	}
-	
+		
 	@RequestMapping("/index")
 	public String index() {
 		
@@ -391,6 +421,11 @@ public class EmpController {
 		
 		// 로그인 폼으로 redirect
 		return "redirect:/emp/loginForm";
+	}
+	
+	@RequestMapping("/")
+	public String initMain() {
+		return "redirect:/emp/index";
 	}
 }
 

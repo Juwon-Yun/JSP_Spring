@@ -16,7 +16,7 @@
 	<p> 
 		 내용 : <br>
 		<form:textarea path="articleContentVO.content" rows="6" cols="30" />
-		<font color="red"><form:errors path="articleContentVO."/></font>
+		<font color="red"><form:errors path="articleContentVO.content"/></font>
 	</p>
 	<form:button name="register">등록</form:button>
 	

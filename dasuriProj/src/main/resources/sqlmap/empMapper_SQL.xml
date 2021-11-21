@@ -42,7 +42,10 @@
   	</select>
   	<!-- 직원 정보 상세 -->
   	<select id="detail" parameterType="String" resultType="empVo" >
-  		SELECT * FROM EMP WHERE EMP_NO = #{value}
+		SELECT EMP_NO,NM,ADDR,HP,POST_NO,ADDR2
+			 , PKG_CRYPTO.DECRYPT(PASSWORD) AS PASSWORD
+		FROM   EMP 
+		WHERE  EMP_NO = #{empNo} 
   	</select>
 	<update id="update" parameterType="string">
   			UPDATE EMP 
@@ -58,9 +61,7 @@
 <!-- 		</select> -->
   		
   		<select id="list" resultType="empVo">
-  			<![CDATA[
   				SELECT * FROM EMP
-  			]]>
   				ORDER BY EMP_NO ASC
   		</select>
   		

@@ -194,7 +194,9 @@ public class GuestBookController {
 	
 	//상품 장바구니 추가 데이터
 	@RequestMapping(value = "/addCart", method=RequestMethod.POST)
-	public ModelAndView getCartlist(@RequestParam String id, HttpServletRequest request, ModelAndView mav) {
+	public ModelAndView getCartlist(@RequestParam String id
+			, HttpServletRequest request
+			, ModelAndView mav) {
 		ProductVO product = new ProductVO();
 		String converdata ="";
 		

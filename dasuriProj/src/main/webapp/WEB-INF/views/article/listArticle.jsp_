@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>게시글 목록</title>
+</head>
+<body>
+<table border="1">
+<thead>
+	<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>조회수</th>
+	</tr>
+</thead>
+<tfoot>
+	<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>조회수</th>
+	</tr>
+</tfoot>
+<tbody>
+	<c:forEach var="row" items="${articlePage.content}" varStatus="stat" >
+		<tr>
+			<th>${stat.count}</th>
+			<th>${row.title}</th>
+			<th>${row.writerVo.writerName}</th>
+			<th>${row.readCnt}</th>
+		</tr>
+	</c:forEach>
+	<tr>
+		<td colspan="4" style="text-align: center;">
+			<c:if test="${articlePage.currentPage > 5}">
+				<a href="/article/listArticle?currentPage=${articlePage.startPage - 5}">[이전]</a>
+			</c:if>
+			<c:forEach var="pNo" begin="${articlePage.startPage}" end="${articlePage.endPage}">
+				<a href="/article/listArticle?currentPage=${pNo}">[${pNo}]</a>&nbsp;
+			</c:forEach>
+			<c:if test="${articlePage.endPage < articlePage.totalPage}">
+				<a href="/article/listArticle?currentPage=${articlePage.startPage + 5}">[다음]</a>
+			</c:if>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

@@ -12,5 +12,8 @@
   		<typeAlias type="kr.or.ddit.cus.vo.CusVO" alias="cusVo"/>
   		<typeAlias type="kr.or.ddit.car.vo.CarVO" alias="carVo"/>
   		<typeAlias type="kr.or.ddit.repSer.vo.RepSerVO" alias="repSerVo"/>
+  		<typeAlias type="kr.or.ddit.article.vo.ArticleVO" alias="articleVo"/>
+  		<typeAlias type="kr.or.ddit.article.vo.WriterVO" alias="writerVo"/>
+  		<typeAlias type="kr.or.ddit.article.vo.ArticleContentVO" alias="articleContentVo"/>
   	</typeAliases>
   </configuration>
